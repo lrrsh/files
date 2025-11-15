@@ -1,0 +1,30 @@
+# Ignore IDE-specific files
+.idea/
+.vscode/
+# Emacs
+*~
+\#*\#
+.\#*
+.emacs.desktop
+.emacs.desktop.lock
+auto-save-list/
+tramp
+eshell/
+# Vim
+*.swp
+*.swo
+*.vim
+.vim/
+# Neovim
+*.nvim
+.nvim/
+
+# Common backup files
+*.bak
+*.tmp
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/

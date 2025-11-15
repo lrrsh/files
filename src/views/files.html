@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Index of /{{ current_path }}</title>
+
+    <style>
+      :root {
+        --bg: #f6f8fb;
+        --card: #ffffff;
+        --text: #111;
+        --muted: #6b7280;
+        --accent: #0b63d6;
+        --surface: #f3f6fb;
+        --border: #e6e9ee;
+        --row-hover: rgba(11, 99, 214, 0.05);
+        --radius: 10px;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono",
+          "Courier New", monospace;
+        --transition: 150ms ease;
+      }
+
+      /* Dark mode adjustments */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0f1116;
+          --card: #181b20;
+          --text: #f1f3f6;
+          --muted: #707991;
+          --surface: #1d2128;
+          --border: #272b35;
+          --row-hover: rgba(255, 255, 255, 0.04);
+        }
+      }
+
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+      a:hover {
+        opacity: 0.7;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 30px auto;
+        padding: 20px;
+      }
+
+      .card {
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+        padding: 20px;
+      }
+
+      header.row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+        gap: 14px;
+      }
+
+      .title h1 {
+        font-size: 19px;
+        margin: 0;
+        font-weight: 600;
+      }
+
+      .subtitle {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .search {
+        display: flex;
+        align-items: center;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        padding: 8px 10px;
+        border-radius: 8px;
+        gap: 8px;
+      }
+
+      .search input {
+        width: 220px;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: var(--text);
+      }
+
+      .breadcrumb {
+        font-size: 13px;
+        color: var(--muted);
+        border-left: 1px solid var(--border);
+        padding-left: 10px;
+      }
+
+      table.files {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 12px;
+        font-family: var(--mono);
+        font-size: 14px;
+      }
+
+      table.files thead th {
+        text-align: left;
+        padding: 10px 8px;
+        cursor: pointer;
+        position: sticky;
+        top: 0;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        color: var(--muted);
+        font-weight: 600;
+        transition: var(--transition);
+      }
+
+      table.files tbody tr {
+        transition: var(--transition);
+      }
+
+      table.files tbody tr:nth-child(odd) {
+        background: transparent;
+      }
+      table.files tbody tr:nth-child(even) {
+        background: rgba(0, 0, 0, 0.01);
+      }
+
+      table.files tbody tr:hover {
+        background: var(--row-hover);
+      }
+
+      table.files td {
+        padding: 10px 8px;
+        border-bottom: 1px dashed var(--border);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .icon {
+        width: 18px;
+        height: 18px;
+        fill: var(--accent);
+      }
+
+      .badge {
+        background: #eaf2ff;
+        color: var(--accent);
+        padding: 3px 7px;
+        border-radius: 999px;
+        font-size: 12px;
+      }
+
+      footer.site-footer {
+        margin-top: 18px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      @media (max-width: 720px) {
+        table.files thead {
+          display: none;
+        }
+        table.files tbody tr {
+          display: block;
+          border: 1px solid var(--border);
+          margin-bottom: 10px;
+          border-radius: 8px;
+        }
+        table.files td {
+          display: block;
+          padding: 12px;
+        }
+        .search input {
+          width: 120px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <svg
+          aria-hidden="true"
+          style="position: absolute; width: 0; height: 0; overflow: hidden"
+        >
+          <symbol id="icon-folder" viewBox="0 0 24 24">
+            <path
+              d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"
+            />
+          </symbol>
+          <symbol id="icon-file" viewBox="0 0 24 24">
+            <path
+              d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"
+            />
+          </symbol>
+          <symbol id="icon-search" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="7" />
+            <line x1="16.5" y1="16.5" x2="20" y2="20" stroke-width="2" />
+          </symbol>
+        </svg>
+
+        <header class="row">
+          <div class="title">
+            <h1>Index of /{{ current_path }}</h1>
+            <div class="subtitle">{{ entries|length }} items</div>
+          </div>
+
+          <div class="controls">
+            <div class="search">
+              <svg class="icon"><use href="#icon-search"></use></svg>
+              <input id="filterInput" placeholder="Search…" />
+            </div>
+            <div class="breadcrumb">/{{ current_path }}</div>
+          </div>
+        </header>
+
+        <table class="files" id="fileTable">
+          <thead>
+            <tr>
+              <th data-col="name">Name</th>
+              <th data-col="mtime">Modified</th>
+              <th data-col="size">Size</th>
+              <th data-col="type">Type</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr data-name=".." data-type="folder">
+              <td>
+                <a href="{{ parent or '../' }}"
+                  ><svg class="icon"><use href="#icon-folder"></use></svg> ..</a
+                >
+              </td>
+              <td class="muted">—</td>
+              <td class="muted">—</td>
+              <td><span class="badge">Folder</span></td>
+            </tr>
+
+            {% for e in entries %}
+            <tr
+              data-name="{{ e.display|e }}"
+              data-type="{{ 'folder' if e.is_dir else 'file' }}"
+              data-size="{{ e.size }}"
+              data-mtime="{{ e.mtime }}"
+            >
+              <td>
+                <a href="{{ url_for('browse', req_path=e.rel_path) }}">
+                  <svg class="icon">
+                    <use
+                      href="{{ '#icon-folder' if e.is_dir else '#icon-file' }}"
+                    ></use>
+                  </svg>
+                  {{ e.display }}
+                </a>
+              </td>
+              <td class="muted">{{ e.mtime }}</td>
+              <td class="muted">{{ e.size }}</td>
+              <td><span class="badge">{{ e.type }}</span></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <footer class="site-footer">
+          <div>Generated by File Server</div>
+          <a href="https://github.com/lrrsh/files" target="_blank">Source</a>
+        </footer>
+      </div>
+
+      <div
+        style="
+          text-align: center;
+          margin-top: 10px;
+          color: var(--muted);
+          font-size: 13px;
+        "
+      >
+        Type to filter · Click columns to sort
+      </div>
+    </div>
+
+    <script>
+      (() => {
+        const filterInput = document.getElementById("filterInput");
+        const tbody = document.querySelector("#fileTable tbody");
+        const rows = [...tbody.querySelectorAll("tr")];
+
+        function normalize(s) {
+          return (s || "").toLowerCase();
+        }
+
+        filterInput.addEventListener("input", (e) => {
+          const q = normalize(e.target.value);
+          rows.forEach((r) => {
+            const name = normalize(r.dataset.name);
+            const type = normalize(r.dataset.type);
+            r.style.opacity =
+              !q || name.includes(q) || type.includes(q) ? "1" : "0.15";
+          });
+        });
+
+        // Sorting
+        let state = { col: null, dir: 1 };
+        document.querySelectorAll("th[data-col]").forEach((th) => {
+          th.addEventListener("click", () => {
+            const col = th.dataset.col;
+            state.dir = state.col === col ? -state.dir : 1;
+            state.col = col;
+            sort(col, state.dir);
+          });
+        });
+
+        function parseSize(s) {
+          const units = {
+            b: 1,
+            k: 1024,
+            m: 1024 * 1024,
+            g: 1024 * 1024 * 1024,
+          };
+          const m = s.toLowerCase().match(/([\d\.]+)\s*([bkmg])?b?$/);
+          return m ? parseFloat(m[1]) * (units[m[2]] || 1) : parseFloat(s) || 0;
+        }
+
+        function sort(col, dir) {
+          const visible = rows;
+          visible.sort((a, b) => {
+            let x, y;
+            if (col === "name") {
+              x = a.dataset.name.toLowerCase();
+              y = b.dataset.name.toLowerCase();
+            } else if (col === "mtime") {
+              x = Date.parse(a.dataset.mtime) || 0;
+              y = Date.parse(b.dataset.mtime) || 0;
+            } else if (col === "size") {
+              x = parseSize(a.dataset.size);
+              y = parseSize(b.dataset.size);
+            } else {
+              x = a.dataset.type;
+              y = b.dataset.type;
+            }
+            return (x < y ? -1 : x > y ? 1 : 0) * dir;
+          });
+          visible.forEach((r) => tbody.appendChild(r));
+        }
+      })();
+    </script>
+  </body>
+</html>
