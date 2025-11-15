@@ -20,6 +20,3 @@
 *.ico binary
 *.pdf binary
 *.svg binary
-
-# Linguist overrides
-*.html linguist-language=Text
