@@ -35,6 +35,7 @@ def map_type(is_dir, name):
 		".pptx": "Presentation",
 		".csv": "Data",
 		".json": "Data",
+    ".iso": "Optical disc image",
 		".xml": "Data",
 		".zip": "Compressed",
 		".tar": "Compressed",
